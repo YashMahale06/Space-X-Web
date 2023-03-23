@@ -47,83 +47,11 @@ function Dashboard() {
   useEffect(() => {
     getData();
   }, [filter]);
-  const fields = [
-    {
-      year: 2006,
-      path: "/2006",
-      current: false,
-    },
-    {
-      year: 2007,
-      path: "/2007",
-      current: false,
-    },
-    {
-      year: 2008,
-      path: "/2008",
-      current: false,
-    },
-    {
-      year: 2009,
-      path: "/2009",
-      current: false,
-    },
-    {
-      year: 2010,
-      path: "/2010",
-      current: false,
-    },
-    {
-      year: 2011,
-      path: "/2011",
-      current: false,
-    },
-    {
-      year: 2012,
-      path: "/2012",
-      current: false,
-    },
-    {
-      year: 2013,
-      path: "/2013",
-      current: false,
-    },
-    {
-      year: 2014,
-      path: "/2014",
-      current: false,
-    },
-    {
-      year: 2015,
-      path: "/2015",
-      current: false,
-    },
-    {
-      year: 2016,
-      path: "/2016",
-      current: false,
-    },
-    {
-      year: 2017,
-      path: "/2017",
-      current: false,
-    },
-    {
-      year: 2018,
-      path: "/2018",
-      current: false,
-    },
-    {
-      year: 2019,
-      path: "/2019",
-      current: false,
-    },
-    {
-      year: 2020,
-      path: "/2020",
-      current: false,
-    },
-  ];
+
+  const Years = new Array(15)
+  .fill(0)
+  .map((_, index) => 2006 + index);
+
   return (
     <div>
       <div>
@@ -146,20 +74,20 @@ function Dashboard() {
               </div>
 
               <div className="mt-6 ml-12 grid grid-rows-6 grid-cols-2 ">
-                {fields.map(({ year }) => (
+                {Years.map((item) => (
                   <Link>
                     <button
                       type="button"
-                      value={year}
+                      value={item}
                       onClick={updateFilter}
                       name="launch_year"
                       className={` text-white shadow-lg border-2 w-16 font-medium rounded-lg text-sm px-4 py-1.5 mr-2 mb-2   ${
-                        filter.launch_year === year.toString()
+                        filter.launch_year === item.toString()
                           ? "bg-gray-400"
                           : "bg-gray-800"
                       }`}
                     >
-                      {year}
+                      {item}
                     </button>
                   </Link>
                 ))}
